@@ -1,0 +1,15 @@
+[Unit]
+Description=Micro interno para 'Radio Mic': Boost a 0 y volumen 100%
+After=pipewire.service wireplumber.service
+Wants=pipewire.service wireplumber.service
+PartOf=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/mic-radio-hardware
+Restart=always
+RestartSec=2
+Nice=10
+
+[Install]
+WantedBy=default.target

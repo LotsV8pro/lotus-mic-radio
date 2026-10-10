@@ -1,0 +1,35 @@
+[Audio]
+levelMetersAnimationDuration=298
+levelMetersFpsCap=58
+
+[Presets]
+lastLoadedInputPreset=Radio Mic
+lastLoadedOutputPreset=Kithara (Peace Win)
+
+[Spectrum]
+spectrumShape=area
+
+[StreamInputs]
+inputDevice=alsa_input.pci-0000_00_1f.3.analog-stereo
+mostUsedPresets=Default,Radio Mic,Current,Warmer
+plugins=rnnoise#0,filter#0,expander#0,deesser#0,equalizer#0,compressor#0,limiter#0
+usedPresets=Default:14,Current:8,Warmer:3,Radio Mic:8
+visiblePage=pluginsPage
+visiblePlugin=filter#0
+
+[StreamOutputs]
+blocklist=Wuthering Waves,spotify,Zen
+mostUsedPresets=Kithara (Peace Win),ROG Kithara,Artics Nova 5
+outputDevice=alsa_output.pci-0000_00_1f.3.analog-stereo
+plugins=equalizer#0,compressor#0,limiter#0
+usedPresets=Kithara (Peace Win):1,ROG Kithara:1,Artics Nova 5:2
+visiblePlugin=limiter#0
+
+[Window]
+autostartOnLogin=true
+height=1350
+inputAutoloadingFallbackPreset=Current
+outputAutoloadingFallbackPreset=Artics Nova 5
+visiblePage=inputPage
+visiblePresetSheetPage=autoloadingPage
+width=1242

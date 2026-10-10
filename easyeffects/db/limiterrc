@@ -1,0 +1,12 @@
+[sie][Limiter#0]
+alr=true
+gainBoost=false
+release=20
+threshold=-1
+
+[soe][Limiter#0]
+alr=true
+lookahead=5.01
+oversampling=22
+release=100
+threshold=-8

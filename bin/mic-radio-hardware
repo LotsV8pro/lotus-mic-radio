@@ -1,0 +1,17 @@
+#!/bin/sh
+# Micro interno ALC897 para el preset 'Radio Mic'
+# Mantiene viva la entrada y el boost a 0 (WirePlumber repone boost=3 al cambiar
+# volumen/ruta, por eso el boost se fija AL FINAL de cada ciclo).
+HW=alsa_input.pci-0000_00_1f.3.analog-stereo
+i=0
+while [ $i -lt 60 ] && ! amixer -c 0 sget 'Rear Mic Boost' >/dev/null 2>&1; do
+    sleep 0.5; i=$((i+1))
+done
+while true; do
+    amixer -c 0 -q sset 'Input Source' 'Rear Mic' 2>/dev/null
+    amixer -c 0 -q sset 'Capture'      100% unmute 2>/dev/null
+    amixer -c 0 -q sset 'Rear Mic'     100% unmute 2>/dev/null
+    pactl set-source-volume easyeffects_source 100%  2>/dev/null
+    amixer -c 0 -q sset 'Rear Mic Boost' 0 2>/dev/null   # ULTIMO
+    sleep 1
+done

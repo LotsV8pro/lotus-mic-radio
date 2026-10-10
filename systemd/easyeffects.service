@@ -1,0 +1,19 @@
+[Unit]
+Description=Easy Effects (mic processing only)
+After=pipewire.service pipewire-pulse.service wireplumber.service graphical-session.target
+Wants=pipewire.service pipewire-pulse.service
+PartOf=graphical-session.target
+StartLimitInterval=1min
+StartLimitBurst=5
+
+[Service]
+Type=simple
+Environment=QT_QPA_PLATFORM=wayland
+Environment=QT_LOGGING_RULES=qt.qpa.xcb.warning=false
+ExecStartPre=/bin/sh -c 'for i in $(seq 1 30); do pw-cli info 0 >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1'
+ExecStart=/usr/bin/easyeffects --hide-window --service-mode
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
